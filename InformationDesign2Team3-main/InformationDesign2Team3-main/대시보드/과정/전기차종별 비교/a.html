@@ -1,0 +1,64 @@
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <script src="https://cdn.anychart.com/releases/8.7.1/js/anychart-core.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/8.7.1/js/anychart-radar.min.js"></script>
+    <style type="text/css"></style>
+    <link rel="stylesheet" href="a.css">
+
+    <div class="radar">
+      <form>
+        <select id="select_box" name="Car" onchange="handleOnChange(this)" style="top:0px;left:0px">
+          <option value="none" selected>=== 선택 ===</option>
+          <option value="코나">코나</option>
+          <option value="아이오닉(HP)">아이오닉(HP)</option>
+          <option value="아이오닉5">아이오닉5</option>
+          <option value="니로">니로EV</option>
+          <option value="쏘울">쏘울</option>
+          <option value="ZOE">ZOE ZEN</option>
+          <option value="i3">i3 120Ah Lux</option>
+          <option value="Bolt">BOLT EV LT</option>
+          <option value="Model3">Model 3(SRP RWD)</option>
+          <option value="Modely">Model Y(Long Range)</option>
+          <option value="208">Peugeot e-208</option> <!--Allure-->
+          <option value="2008">Peugeot e-2008 SUV</option>  <!--Allure-->
+          <option value="DS3">DS3 E-tense So Chic</option>
+          <option value="SMART">SMART EV Z</option>
+        </select>
+        <Button onclick="DeleteAll()">모두 삭제</Button>
+        <Button onclick="DeleteSelect()">선택 삭제</Button>
+      </form>
+      <table>
+        <tr>
+            <th></th>
+            <th>4인승</th>
+        </tr>
+        <tr>
+            <th>최고속도</th>
+            <td>막대그래프</td>
+        </tr>
+        <tr>
+            <th>주행거리</th>
+            <td>막대그래프</td>
+        </tr>
+        <tr>
+            <th>연비</th>
+            <td>막대그래프</td>
+        </tr>
+        <tr>
+            <th>가격</th>
+            <td>막대그래프</td>
+        </tr>
+        <tr>
+            <th>보조금</th>
+            <td>막대그래프<br>(지역 선택)</td>
+        </tr>
+      </table>
+    </div>
+  </head>
+
+  <body>
+    <div id="container"></div>
+    <script src="./a.js"></script>
+  </body>
+</html> 

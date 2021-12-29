@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script src="https://d3js.org/d3.v4.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    <style>
+        #name{
+            left: 0;
+            top: 0;
+        }
+
+        body {
+            margin: 0;
+        }
+
+        .axis text {
+            fill: #888;
+            font-size: 11px;
+        }
+
+        .axis line {
+            stroke: #888;
+        }
+
+        .axis path {
+            stroke: #888;
+        }
+
+        .bar rect {
+            fill: #A9C9F7;
+        }
+
+        .slider{
+            
+            width: 800px;
+        }
+
+        .zoom {
+            cursor: move;
+            fill: none;
+            pointer-events: all;
+          }
+          .brush {
+            opacity: 0.7;
+            color : "gray"
+          }
+    
+          path.domain {
+            fill: none;
+            stroke: none;
+          }
+    
+          .tick line {
+            opacity: 0.1;
+          }
+
+        
+    </style>
+</head>
+
+<body>
+
+    <div>
+        <svg id="line" width="700" height="500"></svg>
+    <div
+      id="tooltip"
+      style="
+      position: absolute;
+      border: 0 none;
+      border-radius: 7px 7px 7px 7px;
+      background: rgba(255, 254, 254, 0.8);
+      color: rgb(19, 19, 19);
+      padding: 1px 10px 1px 10px;
+
+  
+      "
+    ></div>
+    <table>
+      <tr>
+        <td align="center">
+          <select id="ev_car" name="items1" onchange="evSelect()">
+            <option value="0" selected>코나</option>
+            <option value="1">아이오닉</option>
+            <option value="2">아이오닉5</option>
+            <option value="3">니로EV</option>
+            <option value="4">쏘울</option>
+            <option value="5">ZOE ZEN</option>
+            <option value="6">i3 120Ah Lux</option>
+            <option value="7">BOLT EV LT</option>
+            <option value="8">Model 3</option>
+            <option value="9">Model Y</option>
+            <option value="10">Peugeot e-208 Allure</option>
+            <option value="11">Peugeot e-2008 SUV Allure</option>
+            <option value="12">DS3 E-tense So Chic</option>
+            <option value="13">SMART EV Z</option>
+          </select>
+        </td>
+        <td align="center">
+          <text id="ice_name" height="20px" width="70px" font-size="10px">
+            미니 Hatch
+          </text>
+          <text id="ice_cost" height="20px" width="70px" font-size="10px" value >
+            32300000
+          </text>
+          <text id="ice_fuel" height="20px" width="70px" font-size="10px">
+            12.5
+          </text>
+        </td>
+      </tr>
+    </table>
+
+    <div>
+      <input
+        type="radio"
+        id="ev_low"
+        name="comparedLine"
+        value="low"
+        onclick="changeLine(event)"
+        checked
+      />
+      <label for="ev_low">완속</label>
+
+      <input
+        type="radio"
+        id="ev_fast"
+        name="comparedLine"
+        value="fast"
+        onclick="changeLine(event)"
+      />
+      <label for="ev_fast">급속</label>
+    </div>
+    <input
+      type="text"
+      id="car_name"
+      required
+      minlength="4"
+      maxlength="8"
+      size="10"
+      placeholder="차량이름"
+    />
+    <input
+      id="car_cost"
+      type="number"
+      placeholder="차량가격"
+      min="0"
+      step="1"
+    />
+    <input
+      id="car_fuel"
+      type="number"
+      placeholder="연비"
+      min="0"
+      max="100"
+      step="0.01"
+    />
+    <input type="button" class="meters" value="적용" />
+
+    <!-- <div id="viz">
+      
+    </div>
+    <div id="controls" />
+   -->
+    <script src="https://d3js.org/d3.v4.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <!-- <script src="bar.js" type="text/javascript"></script> -->
+    <script src="line_graph.js" type="text/javascript"></script>
+    </div>
+    <div>
+        <canvas id="Canvas" width="1500" height="100"> </canvas>
+    </div>
+
+    <select id="name" name="option" onchange="chageLangSelect()">
+        <option value="0">코나</option>
+        <option value="1">아이오닉</option>
+        <option value="2">아이오닉5</option>
+        <option value="3">니로EV</option>
+        <option value="4">쏘울</option>
+        <option value="5">ZOE ZEN</option>
+        <option value="6">i3 120Ah Lux</option>
+        <option value="7">BOLT EV LT</option>
+        <option value="8">Model 3</option>
+        <option value="9">Model Y</option>
+        <option value="10">Peugeot e-208 Allure</option>
+        <option value="11">Peugeot e-2008 SUV Allure</option>
+        <option value="12">DS3 E-tense So Chic</option>
+        <option value="13">SMART EV Z</option>
+    </select>
+    <span>
+        <input
+          type="radio"
+          id="ev_low"
+          name="comparedLine"
+          value="low"
+          onclick="changeLine(event)"
+          checked
+        />
+        <label for="ev_low">완속</label>
+  
+        <input
+          type="radio"
+          id="ev_fast"
+          name="comparedLine"
+          value="fast"
+          onclick="changeLine(event)"
+        />
+        <label for="ev_fast">급속</label>
+  
+      </span>
+    <div>
+        <label> Km 변경 </label>
+        <input class="slider" id="km" type="range" name="points" min="0" max="200000" value="100000" oninput="document.getElementById('value1').innerHTML=this.value;" >
+        <span id="value1">100000</span>
+    </div>
+    <script src="bar.js"></script>
+</body>
+
+</html>

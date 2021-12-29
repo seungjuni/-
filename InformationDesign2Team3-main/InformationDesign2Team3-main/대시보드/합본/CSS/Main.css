@@ -1,0 +1,267 @@
+html,
+body {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.mapcss #mapwrap {
+  position: relative;
+  overflow: hidden;
+}
+
+.mapcss .category,
+.mapcss .category * {
+  margin: 0;
+  padding: 0;
+  color: #000;
+}
+
+.mapcss .category {
+  position: absolute;
+  overflow: hidden;
+  top: 10px;
+  left: 10px;
+  width: 150px;
+  height: 50px;
+  z-index: 10;
+  border: 1px solid black;
+  font-family: "Malgun Gothic", "맑은 고딕", sans-serif;
+  font-size: 12px;
+  text-align: center;
+  background-color: #fff;
+}
+
+.mapcss .category .menu_selected {
+  background: #F4A8A8;
+  color: #fff;
+
+  margin: 0 -1px;
+}
+
+.mapcss .category .menu_selected2 {
+  background: #A9C9F7;
+  color: #fff;
+
+  margin: 0 -1px;
+}
+
+.mapcss .category .menu_selected3 {
+  background: #b19cd9;
+  border-right: 1px solid #b19cd9;
+  color: #fff;
+
+  margin: 0 -1px;
+}
+
+.mapcss .category li {
+  list-style: none;
+  float: left;
+  width: 50px;
+  height: 45px;
+  padding-top: 5px;
+  cursor: pointer;
+}
+
+.mapcss .category .ico_comm {
+  display: block;
+  margin: 0 auto 2px;
+  width: 35px;
+  height: 22px;
+  background: url("../image/category.png") no-repeat;
+}
+
+.mapcss .category .ico_fast {
+  background-position: -1px 0;
+}
+
+.mapcss .category .ico_slow {
+  background-position: -1px -36px;
+}
+
+.mapcss .category .ico_both {
+  background-position: -1px -72px;
+}
+
+/* #region 꺾은선 스타일 */
+.linecss .zoom {
+  cursor: move;
+  fill: none;
+  pointer-events: all;
+}
+
+.linecss .brush {
+  opacity: 0.7;
+  color: "gray";
+}
+
+.linecss path.domain {
+  fill: none;
+  stroke: none;
+}
+
+.linecss .tick line {
+  opacity: 0.1;
+}
+
+/* #endregion */
+
+.barcss #name {
+  left: 0;
+  top: 0;
+}
+
+.barcss body {
+  margin: 0;
+}
+
+.barcss .axis text {
+  fill: #888;
+  font-size: 8px;
+}
+
+.barcss .axis line {
+  stroke: #888;
+}
+
+.barcss .axis path {
+  stroke: #888;
+}
+
+.barcss .bar rect {
+  fill: #a9c9f7;
+}
+
+.barcss .slider {
+  width: 800px;
+}
+
+#container {
+  position: absolute;
+  width: 400px;
+  height: 350px;
+  margin: 0;
+  padding: 0;
+  top: 330px;
+  left: 570px;
+}
+head {
+  position: relative;
+}
+/* --------------------------- */
+.radar td,
+th {
+
+  height: 12px;
+}
+.radar td {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 160px;
+  padding: 10px;
+  border-bottom: 1px solid #ccc;
+}
+
+.radar th {
+  width: 250px;
+  padding: 5px;
+  font-weight: bold;
+  border-bottom: 1px solid #ccc;
+  background: #E2E2E2;
+}
+.radar table {
+  position: absolute;
+  top: 20px;
+  left: 628px;
+  z-index: 9998;
+  font-size: 14px;
+  width: 280px;
+
+  border-collapse: separate;
+  border-spacing: 1px;
+  line-height: 1.5;
+  border-top: 1px solid #ccc;
+  margin: 20px 10px;
+}
+
+
+
+/* --------------------------- */
+#radar_wrapper {
+  border: 4px double black;
+  position: absolute;
+  width: 445px;
+  height: 580px;
+  left: 628px;
+  top: 440px;
+  z-index: 9998;
+}
+.radar #select_box {
+  display: flex;
+  margin-bottom: 10px;
+  width: 320px;
+  height: 40px;
+  top: 200px;
+  font-size: 20px;
+}
+.radar button {
+  width: 105px;
+  height: 40px;
+  font-size: 20px;
+}
+.radar form {
+  position: absolute;
+  z-index: 9998;
+  left: 730px;
+  top: 950px;
+  padding: 10px;
+}
+#Bar_Graph_Area{
+  position: absolute;
+  left: 1030px;
+  top:1000px;
+  padding: 10px;
+}
+.test{
+  position: absolute;
+  left: 1700px;
+  top:700px;
+  padding: 10px;
+}
+
+.selectradio {
+  
+  padding: 15px 10px;
+}
+.selectradio input[type=radio]{
+  display: none;
+}
+.selectradio input[type=radio]+label{
+  display: inline-block;
+  cursor: pointer;
+  height: 24px;
+  width: 90px;
+  border: 1px solid rgb(204, 204, 204);
+  line-height: 24px;
+  text-align: center;
+  font-weight:bold;
+  font-size:13px;
+  border-radius: 12px;
+}
+.selectradio input[type=radio]+label{
+  background-color: #fff;
+  color: #333;
+}
+
+.selectradio input[id=ev_fast]:checked+label{
+  background-color: #F4A8A8;
+  color: #fff;
+}
+.selectradio input[id=ev_low]:checked+label{
+  background-color: #A9C9F7;
+  color: #fff;
+}

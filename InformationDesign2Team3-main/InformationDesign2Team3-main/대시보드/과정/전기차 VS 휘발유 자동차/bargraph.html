@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script src="https://d3js.org/d3.v4.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="bar.js"></script>
+    <style>
+        #name{
+            left: 0;
+            top: 0;
+        }
+
+        body {
+            margin: 0;
+        }
+
+        .axis text {
+            fill: #888;
+            font-size: 11px;
+        }
+
+        .axis line {
+            stroke: #888;
+        }
+
+        .axis path {
+            stroke: #888;
+        }
+
+        .bar rect {
+            fill: #A9C9F7;
+        }
+
+        .slider{
+            
+            width: 800px;
+        }
+
+        
+    </style>
+</head>
+
+<body>
+    <div>
+        <canvas id="Canvas" width="1500" height="500"> </canvas>
+    </div>
+
+    <select id="name" name="option" onchange="chageLangSelect()">
+        <option value="0">코나</option>
+        <option value="1">아이오닉</option>
+        <option value="2">아이오닉5</option>
+        <option value="3">니로EV</option>
+        <option value="4">쏘울</option>
+        <option value="5">ZOE ZEN</option>
+        <option value="6">i3 120Ah Lux</option>
+        <option value="7">BOLT EV LT</option>
+        <option value="8">Model 3</option>
+        <option value="9">Model Y</option>
+        <option value="10">Peugeot e-208 Allure</option>
+        <option value="11">Peugeot e-2008 SUV Allure</option>
+        <option value="12">DS3 E-tense So Chic</option>
+        <option value="13">SMART EV Z</option>
+    </select>
+    <span>
+        <input
+          type="radio"
+          id="ev_low"
+          name="comparedLine"
+          value="low"
+          onclick="changeLine(event)"
+          checked
+        />
+        <label for="ev_low">완속</label>
+  
+        <input
+          type="radio"
+          id="ev_fast"
+          name="comparedLine"
+          value="fast"
+          onclick="changeLine(event)"
+        />
+        <label for="ev_fast">급속</label>
+  
+      </span>
+    <div>
+        <label> Km 변경 </label>
+        <input class="slider" id="km" type="range" name="points" min="0" max="200000" value="100000" oninput="document.getElementById('value1').innerHTML=this.value;" >
+        <span id="value1">100000</span>
+    </div>
+
+
+    <script src="bar.js"></script>
+</body>
+
+</html>
